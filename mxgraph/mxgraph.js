@@ -1,0 +1,1 @@
+window.mxBasePath = 'https://cdn.jsdelivr.net/npm/mxgraph@4.2.0/javascript/src';

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
+    <title>Hello world</title>
+</head>
+
+<body style="width: 100%; height: 100%;">
+    <div id="container" style="width:100%;height:100%; overflow: hidden;">
+    </div>
+
+    <script src="../mxgraph/mxgraph.js"></script>
+    <script src="../mxgraph/mxclient.js"></script>
+    <script>
+        function main(container) {
+            if (!mxClient.isBrowserSupported()) {
+                mxUtils.error('Browser Not Supported... Get a new computer fast!');
+                return;
+            }
+            var graph = new mxGraph(container);
+            new mxRubberband(graph);
+
+            var parent = graph.getDefaultParent();
+            var model = graph.getModel();
+            model.beginUpdate();
+            try {
+                var v1 = graph.insertVertex(parent, null, 'Hello,', 20, 20, 80, 30);
+                var v2 = graph.insertVertex(parent, null, 'World!', 100, 150, 80, 30);
+                var e1 = graph.insertEdge(parent, null, 'This is cool', v1, v2);
+            } finally {
+                model.endUpdate();
+            }
+        }
+        window.onload = function () {
+            main(document.getElementById('container'));
+        };
+    </script>
+</body>
+
+</html>
